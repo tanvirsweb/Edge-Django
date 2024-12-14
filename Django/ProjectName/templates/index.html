@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} From index.html {% endblock %}
+
+{% block linktag %} 
+<link type="text/css" rel="stylesheet" href="{% static 'style.css' %}">
+<style type="text/css">
+    img {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+{% endblock %}
+
+{% block blockName %}
+<div>
+    <h2>Home page from</h2>
+    ProjectName/templates/index.html
+</div>
+<div>
+    <a class="nav-link" href="/newpage">Go to http://127.0.0.1:8000/newpage/</a><br>
+    <a class="nav-link" href="/page1">Go to http://127.0.0.1:8000/page1/</a>
+</div>
+<div>
+    <img src="{% static 'admin/img/track-bg.jpg' %}" alt="track-bg loading..." />
+</div>
+
+{% endblock %}

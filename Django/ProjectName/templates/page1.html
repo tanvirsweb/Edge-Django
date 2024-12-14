@@ -1,0 +1,39 @@
+{% extends "base/base.html" %} 
+{% comment %} 
+    {% extends "/base/base.html" %}   will generate error emit / at start of url
+{% endcomment %}
+{% load static %}
+
+{% block title %}
+    title: {{page_title}}
+{% endblock %}
+
+{% block info-block %}
+name: {{username}} <br>
+item-list: {{items}}<br>
+items[0]: {{items.0}}
+
+<!-- List -->
+<h1>Items (List)</h1>
+<ul>
+    {% for item in items %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+
+<!-- Dictionary -->
+<h1>Info (Dictionary)</h1>
+<ul>
+    {% for key, value in info.items %}
+        <li>{{ key }}: {{ value }}</li>
+    {% endfor %}
+
+    <li>info.name : {{info.name}}</li>
+</ul>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<h1>Interactive Graph Plot</h1>
+<div>
+    {{ graph_html|safe }}
+</div>
+{% endblock %}

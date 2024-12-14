@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+a, a:hover {
+    color: #007fff;
+    text-decoration: none;
+}
