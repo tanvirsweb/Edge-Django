@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{%static 'css/bootstrap.min.css' %}" rel="stylesheet">   
+    <title>
+        {% comment %} Django Object Detection {% endcomment %}
+        Objectify.ai | Smart Object Detection, Powered by YOLO v3
+        {% comment %} Real-Time Object Detection with YOLOv3 {% endcomment %}
+    </title>
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <marquee class="h1 bg-secondary text-white mb-3 p-2">Smart Object Detection, Powered by YOLO v3</marquee>
+        <div class="bg-light shadow mx-auto p-4">
+            <h2 class="">Upload an image:</h2>
+            <form class="form-group row" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-md-4">
+                    <input class="form-control mb-2" type="file" name="image" required>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-secondary" type="submit">Upload</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="bg-light col-md-12 shadow mx-auto my-4">
+            <div class="row m-3 p-4"> 
+                {% if objects %}
+                    <h2>Detected Objects:</h2>
+                    <!-- <ul>
+                        {% for obj in objects %}
+                            <li>{{ obj }}</li>
+                        {% endfor %}
+                    </ul> -->
+                    <table class="table table-striped">
+                    
+                        <tr>
+                            <th>Class</th> <th>Number of occurance</th>
+                        </tr>
+                                            
+                    {% for obj0, obj1 in objects %}
+                        <tr>
+                            <td>{{ obj0 }}</td> <td> {{ obj1 }}</td>
+                        </tr>                            
+                    {% endfor %}                                            
+                    </table>
+                    {% comment %} <img src="{{ image_url }}" alt="Processed Image"> {% endcomment %}
+                    <div class="text-center">
+                        <img  class="shadow" width="50%" src="{% static 'img/img_out.jpeg'%}" alt="Processed Image">
+                    </div>
+                {% else %}
+                    <h2>No Image Uploaded or No Object Detected.</h2>
+                {% endif %}                
+            </div>
+        </div>
+    </div>
+</body>
