@@ -4,7 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{%static 'css/bootstrap.min.css' %}" rel="stylesheet">   
+    <link href="{%static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        .c-offwhite {
+            background: #f7f8fc;            
+        }
+        .c-white {
+            background: #ffffff;
+        }
+
+        .bg-s {
+            background:#eaf1fb;
+        }
+    </style>   
     <title>
         {% comment %} Django Object Detection {% endcomment %}
         Objectify.ai | Smart Object Detection, Powered by YOLO v3
@@ -12,10 +24,11 @@
     </title>
 </head>
 
-<body class="bg-light">
+<body class="c-offwhite">
     <div class="container">
-        <marquee class="h1 bg-secondary text-white mb-3 p-2">Smart Object Detection, Powered by YOLO v3</marquee>
-        <div class="bg-light shadow mx-auto p-4">
+
+        <marquee class="rounded-1 h1 bg-secondary text-white p-2">Smart Object Detection, Powered by YOLO v3</marquee>
+        <div class="c-white rounded-3 shadow mx-auto p-4">            
             <h2 class="">Upload an image:</h2>
             <form class="form-group row" action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -28,31 +41,37 @@
             </form>
         </div>
 
-        <div class="bg-light col-md-12 shadow mx-auto my-4">
-            <div class="row m-3 p-4"> 
+        <div class="c-white rounded-3 col-md-12 shadow mx-auto my-4  p-4">
+            <div class="row"> 
                 {% if objects %}
-                    <h2>Detected Objects:</h2>
-                    <!-- <ul>
-                        {% for obj in objects %}
-                            <li>{{ obj }}</li>
-                        {% endfor %}
-                    </ul> -->
-                    <table class="table table-striped">
-                    
-                        <tr>
-                            <th>Class</th> <th>Number of occurance</th>
-                        </tr>
-                                            
-                    {% for obj0, obj1 in objects %}
-                        <tr>
-                            <td>{{ obj0 }}</td> <td> {{ obj1 }}</td>
-                        </tr>                            
-                    {% endfor %}                                            
-                    </table>
-                    {% comment %} <img src="{{ image_url }}" alt="Processed Image"> {% endcomment %}
-                    <div class="text-center">
-                        <img  class="shadow" width="50%" src="{% static 'img/img_out.jpeg'%}" alt="Processed Image">
+                    <div class="col-md-6 col-12">
+                        <h2>Detected Objects:</h2>
+                        <!-- <ul>
+                            {% for obj in objects %}
+                                <li>{{ obj }}</li>
+                            {% endfor %}
+                        </ul> -->
+                        <table class="table table-striped">
+                        
+                            <tr>
+                                <th>Class</th> <th>Number of occurance</th>
+                            </tr>
+                                                
+                        {% for obj0, obj1 in objects %}
+                            <tr>
+                                <td>{{ obj0 }}</td> <td> {{ obj1 }}</td>
+                            </tr>                            
+                        {% endfor %}                                            
+                        </table>
                     </div>
+                    <div class="col-md-6 col-12"></div>
+                    <div class="col-md-6 col-12">
+                        {% comment %} <img src="{{ image_url }}" alt="Processed Image"> {% endcomment %}
+                        <div class="text-center">
+                            <img  class="shadow" width="100%" src="{% static 'img/img_out.jpeg'%}" alt="Processed Image">
+                        </div>
+                    </div>
+                    
                 {% else %}
                     <h2>No Image Uploaded or No Object Detected.</h2>
                 {% endif %}                

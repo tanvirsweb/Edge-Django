@@ -7,8 +7,14 @@ Coder: [Tanvir Anjom Siddique](https://www.linkedin.com/in/tanvir-anjom-siddique
 ## Features
 - Upload images for object detection
 - Process images using a pre-trained model (SSD MobileNet v3)
-- Display detected objects and processed images with bounding boxes
+- Can detect 80 types of objects
+- Display detected objects with number of occurance and processed images with bounding boxes
 - Bootstrap-based UI for a responsive experience
+
+## Live Demo: Running YOLO v3 in a Django Web App
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PAmmYIlerAg?si=mISFB0-PKwrjWLZ9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[![Watch the video](https://img.youtube.com/vi/PAmmYIlerAg/maxresdefault.jpg)](https://www.youtube.com/watch?v=PAmmYIlerAg)
 
 ## Project Structure
 ```
@@ -50,7 +56,7 @@ ObjectDetection/                # Django Project Root
 ## Installation
 ### 1. Clone the Repository
 ```sh
-git clone https://github.com/tanvirsweb/EDGE-DJANGO/ObjectDetectionWebsite/
+git clone https://github.com/tanvirsweb/Object-Detection-Website-using-Django-YoloV3.git
 cd ObjectDetectionWebsite
 ```
 
