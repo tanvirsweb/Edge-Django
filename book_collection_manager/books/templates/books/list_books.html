@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block home_active %}active{% endblock %} 
+{% block add_book_active %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-11 col-12 p-4 m-auto shadow rounded-3">
+            <h2 class="text-center mb-4">Book Collection</h2>
+
+            <!-- Search Form -->
+            <form method="GET" class="d-flex mb-3">
+                <input type="text" class="form-control me-2" name="q" placeholder="Search by title" value="{{ query }}">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+
+            <!-- Add New Book Button -->
+            <div class="text-end mb-3">
+                <a href="{% url 'add_book' %}" class="btn btn-success">Add New Book</a>
+            </div>
+
+            <!-- Book List -->           
+            <table class="table">            
+                <thead>
+                    <tr>                        
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Published</th>
+                    <th scope="col">Summary</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                    <tr>                        
+                    {% comment %} <th scope="row">
+                        {{ book.title }}
+                    </th> {% endcomment %}
+                    <td>
+                        {{ book.title }}
+                    </td>
+                    <td>
+                        {{ book.author }}
+                    </td>
+                    <td>
+                        {{ book.published_date }}
+                    </td>
+                    <td>
+                        {{ book.summary }}
+                    </td>
+                    <td>
+                        <a href="{% url 'edit_book' book.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{% url 'delete_book' book.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                    </td>
+                    </tr>
+                {% comment %} {% empty %}
+                <div class="text-center">No books found.</div> {% endcomment %}
+                {% endfor %}                      
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

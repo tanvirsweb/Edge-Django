@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-8 col-10 p-4 m-auto shadow rounded-3">
+            <h2 class="m-2">Edit Book</h2>
+            <form class="form" method="POST">
+                {% csrf_token %}
+                <input class="form-control m-2" type="text" name="title" value="{{ book.title }}" required>
+                <input class="form-control m-2" type="text" name="author" value="{{ book.author }}" required>                
+                <input class="form-control m-2" type="date" name="published_date" value="{{ book.published_date|date:'Y-m-d' }}">
+                <textarea class="form-control m-2" name="summary">{{ book.summary }}</textarea>
+                <button class="btn btn-success m-2" type="submit">Update Book</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
